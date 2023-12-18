@@ -1,0 +1,36 @@
+.container-fluid {
+    padding: 20px;
+    height: 10px;
+    
+  }
+  
+  h2 {
+    color: #007bff;
+  }
+  
+  .card {
+    width: 10px;
+    height: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card img {
+    max-height: 10rem;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    text-align: center;
+  }
+  
+  hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+  }
+  
