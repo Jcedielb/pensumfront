@@ -1,0 +1,19 @@
+.subject-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 15px;
+  }
+  
+  .thumb {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+  }
+  
+  .subject-details {
+    margin-top: 20px;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  

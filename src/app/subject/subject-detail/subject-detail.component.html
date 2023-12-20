@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="subject-header">
+    <h3 class="p-3">{{ subjectDetail.name }} - {{ subjectDetail.code }}</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="thumb">
+        <img class="img-fluid" [src]="subjectDetail.image" alt="{{ subjectDetail.name }}" />
+      </div>
+    </div>
+    <div class="col-md">
+      <dl class="subject-details">
+        <div *ngIf="subjectDetail.prerequisites && subjectDetail.prerequisites.length > 0">
+          <dt>Prerrequisitos</dt>
+          <dd class="caption" *ngFor="let prerequisite of subjectDetail.prerequisites">
+            {{ prerequisite.name }} - {{ prerequisite.credits }} créditos
+          </dd>
+          <hr />
+        </div>
+        <dt>Description</dt>
+        <dd>{{ subjectDetail.description }}</dd>
+        <hr />
+        <dt class="bold">Calificaciones</dt>
+        <dd>
+          <ul>
+            <li *ngFor="let grade of subjectDetail.grades">
+              {{ grade.name }}: {{ grade.grade }}
+            </li>
+          </ul>
+        </dd>
+        <hr />
+        <dt class="bold">Profesor(es)</dt>
+        <dd>
+          <ul>
+            <li *ngFor="let professor of subjectDetail.professors">
+              {{ professor.name }}
+            </li>
+          </ul>
+        </dd>
+        <hr />
+        <dt class="bold">Visto</dt>
+        <dd>{{ subjectDetail.viewed ? 'Sí' : 'No' }}</dd>
+      </dl>
+    </div>
+  </div>
+</div>

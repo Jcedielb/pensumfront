@@ -1,12 +1,21 @@
+<div *ngIf="selected">
+  <app-subject-detail [subjectDetail]="selectedSubject"></app-subject-detail>
+</div>
+
+<hr />
+
+<app-subject-create></app-subject-create>
+
 <div class="container-fluid">
   <div *ngFor="let semester of organizedSubjects | keyvalue">
-    <h2 class="text-center">Semestre {{ semester.key }}</h2>
+    <h2 class="text-center">Semestre {{ semester.key }} - Total de Créditos: {{ semesterCredits[+semester.key] }}</h2>
     <hr />
     <div class="row">
-      <div class="col mb-2" *ngFor="let subject of semester.value">
-        <div class="card p-2" style="width: 10rem; height: 15rem">
+      <div class="col mb-2" *ngFor="let subject of semester.value" (click)="onSelected(subject)">
+        <div class="card" style="width: 10rem; height: 5rem" [ngClass]="{'viewed': subject.viewed, 'not-viewed': !subject.viewed}">
           <div class="card-body">
-            <h5 class="card-title">{{ subject.name }}</h5>
+            <h5 class="card-title">{{ subject.name }} </h5>
+            Creditos: {{subject.credits}}
           </div>
         </div>
       </div>

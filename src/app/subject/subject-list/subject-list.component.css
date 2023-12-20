@@ -6,17 +6,20 @@
   
   h2 {
     color: #007bff;
+    font-size: 20px;
   }
   
   .card {
-    width: 10px;
-    height: 10px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
     margin-bottom: 20px;
     transition: transform 0.3s ease-in-out;
+    cursor: pointer;
   }
   
   .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    color:white;
   }
   
   .card img {
@@ -34,3 +37,11 @@
     margin: 20px 0;
   }
   
+  /* subject-list.component.css */
+.viewed {
+  background-color: lightgreen; /* Color para viewed */
+}
+
+.not-viewed {
+  background-color: lightcoral; /* Color para not viewed */
+}

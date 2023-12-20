@@ -1,3 +1,5 @@
+import { Grade } from "../grade/grade";
+
 export class Subject {
     id: number;
     name: string;
@@ -6,9 +8,10 @@ export class Subject {
     credits: number;
     semester: number;
     image: string;
-    prerequisites: Array<Subject> = [];
-
-    constructor(id: number, name: string, code: string, description: string, credits: number, semester: number, image: string) {
+    viewed: boolean;
+    department: string;
+    
+    constructor(id: number, name: string, code: string, description: string, credits: number, semester: number, image: string, department: string, viewed: boolean) {
         this.id = id;
         this.name = name;
         this.code = code;
@@ -16,6 +19,8 @@ export class Subject {
         this.credits = credits;
         this.semester = semester;
         this.image = image;
+        this.department = department;
+        this.viewed = viewed;
     }
 
 }

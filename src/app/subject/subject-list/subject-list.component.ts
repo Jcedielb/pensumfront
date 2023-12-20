@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from '../subject';
 import { SubjectService } from '../subject.service';
+import { SubjectDetail } from '../subject-detail';
 
 @Component({
   selector: 'app-subject-list',
@@ -8,9 +9,11 @@ import { SubjectService } from '../subject.service';
   styleUrls: ['./subject-list.component.css']
 })
 export class SubjectListComponent implements OnInit {
-
-  subjects: Array<Subject> = [];
-  organizedSubjects: { [key: number]: Subject[] } = {}; // Organized subjects by semester
+  selected: boolean = false;
+  subjects: Array<SubjectDetail> = [];
+  selectedSubject!: SubjectDetail;
+  organizedSubjects: { [key: number]: SubjectDetail[] } = {}; // Organized subjects by semester
+  semesterCredits: { [key: number]: number } = {}; // Total credits by semester
 
   constructor(private subjectService: SubjectService) { }
 
@@ -18,6 +21,7 @@ export class SubjectListComponent implements OnInit {
     this.subjectService.getSubjects().subscribe((subjects) => {
       this.subjects = subjects;
       this.organizeSubjectsBySemester();
+      this.calculateSemesterCredits();
     });
   }
 
@@ -28,6 +32,20 @@ export class SubjectListComponent implements OnInit {
       }
       this.organizedSubjects[subject.semester].push(subject);
     });
+  }
+
+  calculateSemesterCredits(): void {
+    Object.keys(this.organizedSubjects).forEach((semesterKey) => {
+      const semesterNumber = parseInt(semesterKey, 10);
+      const semesterSubjects = this.organizedSubjects[semesterNumber];
+      const totalCredits = semesterSubjects.reduce((sum, subject) => sum + subject.credits, 0);
+      this.semesterCredits[semesterNumber] = totalCredits;
+    });
+  }
+
+  onSelected(subject: SubjectDetail): void {
+    this.selected = true;
+    this.selectedSubject = subject;
   }
 
   ngOnInit() {
